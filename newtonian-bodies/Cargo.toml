@@ -1,0 +1,13 @@
+[package]
+name = "newtonian-solar-system"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+arrow = "56.0.0"
+clap = { version = "4.5.45", features = ["derive"] }
+indicatif = "0.18.0"
+meval = "0.2.0"
+parquet = "56.0.0"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.142"
