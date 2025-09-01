@@ -22,6 +22,10 @@ struct Args {
     #[arg(short, long, default_value = "newtonian.parquet")]
     output: Option<PathBuf>,
 
+    /// Gravitational constant (e.g., "6.67430e-11")
+    #[arg(short, long, default_value = "6.67430e-11", value_parser = parse_expression)]
+    gravity: f64,
+
     /// Number of seconds to simulate (e.g., "60*60*24*365")
     #[arg(short, long, default_value = "60*60*24*365", value_parser = parse_expression)]
     total_time: f64,
@@ -45,6 +49,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut writer = writer::Writer::new(output_file)?;
     simulate(
         &mut bodies.clone(),
+        args.gravity,
         args.total_time,
         args.delta_t,
         args.record_interval,

@@ -7,9 +7,11 @@ pub struct Body {
     pub position: Vector,
     pub velocity: Vector,
 
-    #[serde(default = "Vector::default")]
+    #[serde(default = "Vector::null")]
     pub acceleration: Vector,
 }
+
+
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Vector {
@@ -19,7 +21,7 @@ pub struct Vector {
 }
 
 impl Vector {
-    pub fn default() -> Self {
+    pub fn null() -> Self {
         Vector {
             x: 0.0,
             y: 0.0,
